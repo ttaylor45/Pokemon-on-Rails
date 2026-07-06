@@ -1,9 +1,24 @@
-# Pokemon-on-Rails
+# README
 
-This will be my project for the intro to rails, I'll be using the API and JSON from the instructions given to me.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-# 1.1 Describe the datasets.
+Things you may want to cover:
 
-For this project I plan on using the pokemon dataset. Thi will use two data sources, which are the API and JSON. In the API it shows all the pokemon and what they do like moves, types (grass, fire, electric, ect....), abilities and general information like height and weight, It also shows their base stats. I will use this API to get info on each pokemon that is in here.
+* Ruby version
 
-The main database tables I will use in this project are pokemon, types, abilities, moves. I will also need to make join tables because a single pokemon can have many types, or many abilities. So I will include join tables, which are pokemon_types, pokemon_abilites, and pokemon_moves.
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
