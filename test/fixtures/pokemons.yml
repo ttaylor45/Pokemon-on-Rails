@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pokedex_number: 1
+  height: 1
+  weight: 1
+  base_experience: 1
+  sprite_url: MyString
+
+two:
+  name: MyString
+  pokedex_number: 1
+  height: 1
+  weight: 1
+  base_experience: 1
+  sprite_url: MyString
