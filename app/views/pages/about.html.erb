@@ -1,0 +1,37 @@
+<h1>About Pokemon Explorer</h1>
+
+<p>Welcome to my Pokemon Explorer app! This is created on Ruby on Rails application
+  This displays all the data on Pokemon about there moves, types, pokemon name, pokedex number etc.
+  This application was created by myself Trent Taylor and I used multiple data sources to which are down below.
+</p>
+
+
+<h2>Data Sources</h2>
+
+<ul>
+  <li> I used PokeAPI to collect the Pokemon details such as types, abilities, weight, hieght, the sprites and the base experience.</li>
+  <li>I used the fanzeyi pokemon.json Github dataset as well, the dataset used as a json source for Pokedex informantion. </li>
+  <li>Then I just used the faker gem to generate fake reveiws by fake trainers to what they think on the pokemon. </li>
+</ul>
+
+<h2>Database Structure</h2>
+
+<p>The databse includes the following tables:</p>
+<ul>
+  <li>Pokemons</li>
+  <li>Types</li>
+  <li>Moves</li>
+  <li>Abilities</li>
+  <li>Reviews</li>
+</ul>
+
+<p>This table also contains relationships between the different tables.</p>
+<ul>
+  <li>Pokemons_Types</li>
+  <li>Pokemons_Moves</li>
+  <li>Pokemons_Abilities</li>
+</ul>
+
+<p>Pokemon can have many types, abilities, moves, and reveiws. Types, abilities, moves, and reviews
+  can belong to many pokemons, this is the reason why I created the join tables to connect the relationships between the different tables.
+</p>
