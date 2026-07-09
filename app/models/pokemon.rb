@@ -9,4 +9,7 @@ class Pokemon < ApplicationRecord
   has_many :moves, through: :pokemon_moves
 
   has_many :reviews, dependent: :destroy
+
+  validates :name, presence: true
+  validates :pokedex_number, presence: true, uniqueness: true
 end
