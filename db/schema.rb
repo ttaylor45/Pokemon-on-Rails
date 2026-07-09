@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_06_184608) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_09_014117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,6 +64,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_06_184608) do
     t.integer "weight"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.bigint "pokemon_id", null: false
+    t.integer "rating"
+    t.string "trainer_name"
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_reviews_on_pokemon_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
@@ -76,4 +86,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_06_184608) do
   add_foreign_key "pokemon_moves", "pokemons"
   add_foreign_key "pokemon_types", "pokemons"
   add_foreign_key "pokemon_types", "types"
+  add_foreign_key "reviews", "pokemons"
 end

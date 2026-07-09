@@ -79,6 +79,19 @@ pokedex_data.first(151).each do |pokemon_json|
     )
   end
 
+  puts "Creating fake trainer reviews..."
+  # Data source 3 which using the faker gem to create fake reviews for each pokemon. Each pokemon will have 4 reviews created by fake trainers.
+  Pokemon.all.each do |pokemon|
+    4.times do
+      Review.create!(
+        pokemon: pokemon,
+        trainer_name: Faker::Name.name,
+        rating: rand(1..5),
+        comment: Faker::Games::Pokemon.move
+      )
+    end
+  end
+
   puts "Imported #{pokemon.name}"
 end
 
@@ -90,3 +103,4 @@ puts "Moves: #{Move.count}"
 puts "Pokemon Types: #{PokemonType.count}"
 puts "Pokemon Abilities: #{PokemonAbility.count}"
 puts "Pokemon Moves: #{PokemonMove.count}"
+puts "Reviews: #{Review.count}"
