@@ -2,12 +2,16 @@
 
 <% if @pokemon.sprite_url.present? %>
   <%= image_tag @pokemon.sprite_url, alt: @pokemon.name %>
+<% else %>
+  <p>No image available.</p>
 <% end %>
 
-<p>Pokedex Number: <%= @pokemon.pokedex_number %></p>
-<p>Height: <%= @pokemon.height %></p>
-<p>Weight: <%= @pokemon.weight %></p>
-<p>Base Experience: <%= @pokemon.base_experience %></p>
+<h2>Pokémon Details</h2>
+
+<p><strong>Pokédex Number:</strong> <%= @pokemon.pokedex_number %></p>
+<p><strong>Height:</strong> <%= @pokemon.height %></p>
+<p><strong>Weight:</strong> <%= @pokemon.weight %></p>
+<p><strong>Base Experience:</strong> <%= @pokemon.base_experience %></p>
 
 <h2>Types</h2>
 <ul>
@@ -16,7 +20,7 @@
   <% end %>
 </ul>
 
-</h2>Abilities</h2>
+<h2>Abilities</h2>
 <ul>
   <% @pokemon.abilities.each do |ability| %>
     <li><%= ability.name %></li>
@@ -25,7 +29,7 @@
 
 <h2>Moves</h2>
 <ul>
-  <% @pokemon.moves.each do |move| %>
+  <% @pokemon.moves.limit(10).each do |move| %>
     <li><%= move.name %></li>
   <% end %>
 </ul>
@@ -35,22 +39,20 @@
 <% if @pokemon.reviews.any? %>
   <% @pokemon.reviews.each do |review| %>
     <div class="review">
-      <h4><%= review.trainer_name %></h4>
+      <h3><%= review.trainer_name %></h3>
+
       <p>
         <strong>Rating:</strong>
         <%= "⭐" * review.rating %>
       </p>
-      <p>
-        <%= review.comment %>
-      </p>
+
+      <p><%= review.comment %></p>
+
       <hr>
     </div>
   <% end %>
-
 <% else %>
-
   <p>No trainer reviews yet.</p>
+<% end %>
 
-  <% end %>
-
-</p><%= link_to 'Back to Pokemons list', pokemons_path %></p>
+<p><%= link_to "Back to Pokémon List", pokemons_path %></p>
