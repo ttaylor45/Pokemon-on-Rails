@@ -1,0 +1,56 @@
+<h1><%= @pokemon.name %></h1>
+
+<% if @pokemon.sprite_url.present? %>
+  <%= image_tag @pokemon.sprite_url, alt: @pokemon.name %>
+<% end %>
+
+<p>Pokedex Number: <%= @pokemon.pokedex_number %></p>
+<p>Height: <%= @pokemon.height %></p>
+<p>Weight: <%= @pokemon.weight %></p>
+<p>Base Experience: <%= @pokemon.base_experience %></p>
+
+<h2>Types</h2>
+<ul>
+  <% @pokemon.types.each do |type| %>
+    <li><%= type.name %></li>
+  <% end %>
+</ul>
+
+</h2>Abilities</h2>
+<ul>
+  <% @pokemon.abilities.each do |ability| %>
+    <li><%= ability.name %></li>
+  <% end %>
+</ul>
+
+<h2>Moves</h2>
+<ul>
+  <% @pokemon.moves.each do |move| %>
+    <li><%= move.name %></li>
+  <% end %>
+</ul>
+
+<h2>Trainer Reviews</h2>
+
+<% if @pokemon.reviews.any? %>
+  <% @pokemon.reviews.each do |review| %>
+    <div class="review">
+      <h4><%= review.trainer_name %></h4>
+      <p>
+        <strong>Rating:</strong>
+        <%= "⭐" * review.rating %>
+      </p>
+      <p>
+        <%= review.comment %>
+      </p>
+      <hr>
+    </div>
+  <% end %>
+
+<% else %>
+
+  <p>No trainer reviews yet.</p>
+
+  <% end %>
+
+</p><%= link_to 'Back to Pokemons list', pokemons_path %></p>

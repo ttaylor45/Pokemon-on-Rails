@@ -1,0 +1,21 @@
+<h1>Pokemons Explorer</h1>
+
+<%= form_with url: pokemons_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :search, "Search Pokémon" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+
+<p><%= @pokemons.count %> Pokémon found</p>
+
+<ul>
+  <% @pokemons.each do |pokemon| %>
+    <li>
+      <%= link_to pokemon.name, pokemon_path(pokemon) %>
+      - Pokedex #<%= pokemon.pokedex_number %>
+    </li>
+  <% end %>
+</ul>
+

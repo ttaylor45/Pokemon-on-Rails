@@ -14,13 +14,15 @@ require "open-uri"
 
 puts "clearing old data..."
 
-Pokemon.delete_all
-Type.delete_all
-Ability.delete_all
-Move.delete_all
-PokemonType.delete_all
-PokemonAbility.delete_all
-PokemonMove.delete_all
+Review.destroy_all
+PokemonMove.destroy_all
+PokemonAbility.destroy_all
+PokemonType.destroy_all
+
+Pokemon.destroy_all
+Move.destroy_all
+Ability.destroy_all
+Type.destroy_all
 
 puts "Loading Pokemon Data..."
 
@@ -80,17 +82,67 @@ pokedex_data.first(151).each do |pokemon_json|
   end
 
   puts "Creating fake trainer reviews..."
-  # Data source 3 which using the faker gem to create fake reviews for each pokemon. Each pokemon will have 4 reviews created by fake trainers.
-  Pokemon.all.each do |pokemon|
-    4.times do
-      Review.create!(
-        pokemon: pokemon,
-        trainer_name: Faker::Name.name,
-        rating: rand(1..5),
-        comment: Faker::Games::Pokemon.move
-      )
+# Data source 3 which using the faker gem to create fake reviews for each pokemon. Each pokemon will have 4 reviews created by fake trainers.
+Pokemon.all.each do |pokemon|
+  pokemon_type = pokemon.types.first&.name
+
+  comments =
+    case pokemon_type
+    when "Fire"
+      [
+        "Its fire attacks are incredibly powerful!",
+        "Perfect for aggressive battles.",
+        "One of the strongest Fire Pokémon I've trained."
+      ]
+
+    when "Water"
+      [
+        "Very dependable in long battles.",
+        "Excellent against Fire Pokémon.",
+        "A balanced and reliable teammate."
+      ]
+
+    when "Grass"
+      [
+        "Great for defensive strategies.",
+        "Very useful in the early game.",
+        "One of the most versatile Grass Pokémon."
+      ]
+
+    when "Electric"
+      [
+        "Extremely fast and powerful.",
+        "Lightning attacks hit hard.",
+        "A fantastic Pokémon for beginners."
+      ]
+
+    when "Psychic"
+      [
+        "Very intelligent and difficult to counter.",
+        "Amazing special attacks.",
+        "Definitely worth training."
+      ]
+
+    else
+      [
+        "Very strong in battle.",
+        "One of my favorites.",
+        "Great type coverage.",
+        "Would definitely recommend training this Pokémon.",
+        "Excellent move set.",
+        "Very fast and reliable."
+      ]
     end
+
+  3.times do
+    Review.create!(
+      pokemon: pokemon,
+      trainer_name: Faker::Name.name,
+      rating: rand(3..5),
+      comment: comments.sample
+    )
   end
+end
 
   puts "Imported #{pokemon.name}"
 end
