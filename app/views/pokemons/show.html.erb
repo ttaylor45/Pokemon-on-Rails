@@ -37,7 +37,7 @@
 <h2>Trainer Reviews</h2>
 
 <% if @pokemon.reviews.any? %>
-  <% @pokemon.reviews.each do |review| %>
+  <% @pokemon.reviews.limit(5).each do |review| %>
     <div class="review">
       <h3><%= review.trainer_name %></h3>
 
