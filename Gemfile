@@ -18,7 +18,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # I will be using this faker gem for the fake reveiws created by trainers for pokemon.
-gem "faker", "~> 2.20"
+gem "faker", "~> 3.8"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
